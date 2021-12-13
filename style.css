@@ -1,0 +1,232 @@
+* {
+    box-sizing: border-box;
+}
+
+.gamePage {
+    margin: 0;
+    /* font-family: 'Crimson Text', serif; */
+    font-family: 'Sunflower', sans-serif;
+    --color-black: #080A0C;
+    --color-beige: #d8c99b;
+    --color-green: #68a691;
+    --color-green-light: #a5cabe;
+    --color-pink: #ca6680;
+    --color-pink-light: #db95a7;
+    /* background-color: var(--color-black); */
+    /* Background from SVGBackgrounds.com */
+    background-image: url('./backgroundGame.svg');
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* background-attachment:; */
+    /* background-attachment: fixed; */
+    /* background-size: cover; */
+    /* cursor: url('./needle-svgrepo-com.svg'), auto; */
+    cursor: url('./niddle.svg'), auto;
+}
+
+.gamePage .cursor {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: url('./niddle.svg');
+    z-index: 10;
+    /* top: 70px;
+    right: 20px; */
+}
+
+.gamePage:hover,
+.gamePage:active {
+    cursor: url('./niddle.svg') 10 75, default;
+}
+
+@media(hover: hover) and (max-width:900px) {
+    .gamePage:hover,
+    .gamePage:active {
+        cursor: url('./niddle.svg') 10 75, auto;
+    }
+}
+
+@font-face {
+    font-family: squidGame;
+    src: url('./Game\ Of\ Squids.ttf');
+}
+
+.gamePage .modalWinnerLoser {
+    display: none;
+    background-color: black;
+    color: white;
+    width: 100%;
+    z-index: 10;
+    /* height: 100px; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gamePage .modalWinnerLoser h2 {
+    padding: 10px;
+    font-size: 50px;
+}
+
+.gamePage h2 {
+    font-family: squidGame;
+    font-size: 30px;
+}
+
+.gamePage h1,
+.gamePage h2 {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.gamePage h1 {
+    font-family: 'Zen Dots', cursive;
+    font-size: 2rem;
+}
+
+.gamePage h2 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    /* background-color: var(--color-beige); */
+    text-align: center;
+    margin: 1rem 0 0 0;
+}
+
+.gamePage a {
+    color: var(--color-pink);
+}
+
+.gamePage a:hover,
+.gamePage a:focus {
+    color: var(--color-green-light);
+}
+
+.gamePage button {
+    border: 0;
+    box-shadow: none;
+    font-family: 'Sunflower', sans-serif;
+    font-weight: 500;
+}
+
+.gamePage button:hover,
+.gamePage button:focus {
+    cursor: pointer;
+}
+
+.gamePage .container {
+    width: 98%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.gamePage .container-canvas {
+    width: 370px;
+    height: 370px;
+    margin: 3em auto 0;
+    position: relative;
+}
+
+canvas {
+    display: block;
+    border-radius: 50%;
+    /* border: 2px solid var(--color-green); */
+    box-shadow: 0 0 4px 4px #060c15;
+    width: 370px;
+    height: 370px;
+    /* background-color: #c1b36c; */
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#c4b56f+0,c1a94f+62,6b4c14+90,c1a94f+93,956b1b+94,956b1b+100 */
+    /* background: #c4b56f; */
+    /* Old browsers */
+    /* background: -moz-radial-gradient(center, ellipse cover, #c4b56f 0%, #c1a94f 62%, #6b4c14 90%, #c1a94f 93%, #956b1b 94%, #956b1b 100%); */
+    /* FF3.6-15 */
+    /* background: -webkit-radial-gradient(center, ellipse cover, #c4b56f 0%, #c1a94f 62%, #6b4c14 90%, #c1a94f 93%, #956b1b 94%, #956b1b 100%); */
+    /* Chrome10-25,Safari5.1-6 */
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /* filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#c4b56f', endColorstr='#956b1b', GradientType=1); */
+    /* IE6-9 fallback on horizontal gradient */
+    background: radial-gradient(ellipse at center, #c4b56f 0%, #c1a94f 62%, #6b4c14 90%, #c1a94f 93%, #956b1b 94%, #956b1b 100%);
+}
+
+.gamePage .game {
+    display: grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    place-content: center;
+    background-color: rgba(8, 10, 12, 0.998);
+    /* transition: opacity 10s ease-in-out; */
+}
+
+.gamePage .game.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.gamePage .game__card {
+    background-color: var(--color-beige);
+    color: var(--color-black);
+    padding: 1.4rem 2rem;
+    text-align: center;
+}
+
+.gamePage .game__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.gamePage .game__button {
+    background-color: transparent;
+}
+
+.gamePage .game__button svg {
+    width: 48px;
+}
+
+.gamePage .game__button:hover svg,
+.gamePage .game__button:focus svg {
+    fill: var(--color-pink);
+}
+
+.gamePage .results {
+    background-color: var(--color-black);
+    color: var(--color-green-light);
+    padding: 0.8rem;
+    font-family: 'Zen Dots', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 1.2rem;
+}
+
+.gamePage .score {
+    background-color: var(--color-green-light);
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.gamePage .restart {
+    display: block;
+    margin: 0 auto;
+    color: var(--color-black);
+    background-color: var(--color-pink-light);
+    font-size: 1.5rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem 0.2rem;
+    margin-top: 1rem;
+}
+
+.gamePage .restart:hover,
+.gamePage .restart:focus {
+    background-color: var(--color-green-light);
+}
